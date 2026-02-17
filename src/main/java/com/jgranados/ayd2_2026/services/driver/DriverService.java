@@ -4,9 +4,13 @@
  */
 package com.jgranados.ayd2_2026.services.driver;
 
+import com.jgranados.ayd2_2026.dto.drivers.DriverResponse;
 import com.jgranados.ayd2_2026.dto.drivers.NewDriverRequest;
+import com.jgranados.ayd2_2026.dto.drivers.UpdateDriverRequest;
 import com.jgranados.ayd2_2026.exceptions.DuplicatedEntityException;
+import com.jgranados.ayd2_2026.exceptions.NotFoundException;
 import com.jgranados.ayd2_2026.models.driver.DriverEntity;
+import java.util.List;
 
 
 
@@ -16,8 +20,14 @@ import com.jgranados.ayd2_2026.models.driver.DriverEntity;
  */
 public interface DriverService {
     
-    void create(NewDriverRequest newDriverRequest) throws DuplicatedEntityException;
+    DriverResponse create(NewDriverRequest newDriverRequest) throws DuplicatedEntityException;
     
-    DriverEntity getById(Integer id);
+    DriverEntity getById(Integer id) throws NotFoundException;
+    
+    List<DriverEntity> findAll();
+
+    void deleteDriver(Integer id) throws NotFoundException;
+
+    DriverResponse updateDriver(Integer id, UpdateDriverRequest dataToUpdate) throws NotFoundException, DuplicatedEntityException;
     
 }
