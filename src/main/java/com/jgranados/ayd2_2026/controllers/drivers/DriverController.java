@@ -12,6 +12,7 @@ import com.jgranados.ayd2_2026.exceptions.NotFoundException;
 import com.jgranados.ayd2_2026.exceptions.ServiceException;
 import com.jgranados.ayd2_2026.models.driver.DriverEntity;
 import com.jgranados.ayd2_2026.services.driver.DriverService;
+import jakarta.validation.Valid;
 import java.util.List;
 import javax.sql.rowset.serial.SerialException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class DriverController {
     }
 
     @PostMapping
-    public ResponseEntity<DriverResponse> createDriver(@RequestBody NewDriverRequest newDriver)
+    public ResponseEntity<DriverResponse> createDriver(@RequestBody @Valid NewDriverRequest newDriver)
             throws DuplicatedEntityException {
         DriverResponse response;
 

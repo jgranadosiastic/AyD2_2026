@@ -11,6 +11,7 @@ import com.jgranados.ayd2_2026.exceptions.DuplicatedEntityException;
 import com.jgranados.ayd2_2026.exceptions.NotFoundException;
 import com.jgranados.ayd2_2026.models.driver.DriverEntity;
 import com.jgranados.ayd2_2026.repositories.driver.DriverRepository;
+import jakarta.validation.Validator;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,14 +24,17 @@ import org.springframework.stereotype.Service;
 public class DriverServiceImpl implements DriverService {
 
     private final DriverRepository repository;
+    private final Validator validator;
 
     @Autowired
-    public DriverServiceImpl(DriverRepository repository) {
+    public DriverServiceImpl(DriverRepository repository, Validator validator) {
         this.repository = repository;
+        this.validator = validator;
     }
     
     @Override
     public DriverResponse create(NewDriverRequest newDriverRequest) throws DuplicatedEntityException {
+        validator.validate(newDriverRequest);
         
         if (repository.existsByName(newDriverRequest.getName())) {
             throw new DuplicatedEntityException(".......");

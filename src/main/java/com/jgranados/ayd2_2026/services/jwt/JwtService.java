@@ -1,0 +1,22 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
+ */
+package com.jgranados.ayd2_2026.services.jwt;
+
+/**
+ *
+ * @author jose
+ */
+public interface JwtService {
+    
+    String generateToken(String username);
+    
+    String getUsername(String token);
+    
+    boolean isValid(String token);
+    
+    void updateTokenExpiration(String username);
+    
+    public boolean isTokenExpired(String username);
+}
