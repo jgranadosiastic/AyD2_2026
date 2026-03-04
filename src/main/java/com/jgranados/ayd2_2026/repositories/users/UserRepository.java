@@ -8,11 +8,13 @@ package com.jgranados.ayd2_2026.repositories.users;
 import com.jgranados.ayd2_2026.models.user.User;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author jose
  */
+@Repository
 public interface UserRepository extends CrudRepository<User, String> {
     
     List<User> findAll();

@@ -24,7 +24,7 @@ import org.springframework.stereotype.Service;
  *
  * @author jose
  */
-//@Service
+@Service
 public class JwtServiceImpl implements JwtService {
     public static final String SECRET_PHASE = "bmpJGkpYz0Af4ub65tzlnPRX2De1o02uuStUt2y1nhgAXzhngZJtWOgVAlOWYD41";
     

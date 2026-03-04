@@ -30,5 +30,4 @@ public class DriverEntity {
     private String name;
     @Column
     private Integer age;
-    private long val = 1;
 }

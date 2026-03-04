@@ -18,6 +18,7 @@ import javax.sql.rowset.serial.SerialException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,6 +34,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/v1/drivers")
+@PreAuthorize("hasRole('DRIVER')")
 public class DriverController {
 
     private final DriverService driverService;
@@ -52,6 +54,7 @@ public class DriverController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<DriverResponse> getDriverById(@PathVariable("id") Integer driverId) throws NotFoundException {
         DriverEntity driver = driverService.getById(driverId);

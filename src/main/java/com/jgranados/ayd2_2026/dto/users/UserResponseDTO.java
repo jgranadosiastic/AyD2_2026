@@ -16,9 +16,11 @@ import lombok.Value;
 public class UserResponseDTO {
     private String username;
     private Role role;
+    private String password;
     
     public UserResponseDTO(User userEntity) {
         username = userEntity.getUsername();
         role = userEntity.getRole();
+        password = userEntity.getPassword();
     }
 }
