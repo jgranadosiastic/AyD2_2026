@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @author jose
  */
+// 1. Responsabilidad de ser Libro 
 public class Libro {
     private String titulo;
     private String autor;
@@ -63,6 +64,7 @@ public class Libro {
         return 0;
     }
     
+    // responsabilidad de manejo de archivos
      public void guardarEnArchivo() {
         // Guardar en sistema de archivos
         System.out.println("💾 Guardando libro '" + titulo + "' en archivo libros.txt");
@@ -95,11 +97,13 @@ public class Libro {
         );
     }
     
+    // otra responsabilidad
     public void exportarAExcel() {
         // Código para generar Excel
         System.out.println("Exportando reporte a Excel: " + titulo + ".xls");
     }
     
+    // otra responsabilidad
     public void enviarNotificacionVencimiento() {
         if (prestado && fechaPrestamo != null) {
             long diffInDays = getDiasPrestamo();
